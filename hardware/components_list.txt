@@ -1,0 +1,9 @@
+1x Arduino Uno
+1x Breadboard
+1x Capteur KY-020 (inclinaison)
+1x Buzzer KY-012
+1x Bouton poussoir KY-004
+1x LED rouge
+1x Résistance 220 Ω
+1x Résistance 10 kΩ
+Jumper Wires
