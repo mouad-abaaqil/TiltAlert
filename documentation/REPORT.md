@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./documentation/TiltAlert.png" alt="Logo TiltAlert" width="200">
+  <img src="./TiltAlert.png" alt="Logo TiltAlert" width="200">
 </p>
 
 # Cahier des Charges - Projet TiltAlert
