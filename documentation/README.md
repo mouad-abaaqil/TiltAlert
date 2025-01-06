@@ -19,7 +19,7 @@ TiltAlert est un dispositif de détection de chocs et d’inclinaisons basé sur
    git clone https://github.com/votre-nom-utilisateur/TiltAlert.git
    ```
 2. Téléchargez le fichier `tiltalert.ino` dans l’IDE Arduino.
-3. Connectez les composants selon le [schéma de câblage](./hardware/wiring_diagram.png).
+3. Connectez les composants selon le [schéma de câblage](../hardware/wiring_diagram.png).
 4. Téléversez le code dans votre carte Arduino.
 
 ## Matériel Requis
