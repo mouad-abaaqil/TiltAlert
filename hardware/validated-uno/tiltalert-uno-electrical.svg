@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 1600 1131" role="img" aria-label="TiltAlert Uno">
+<defs><pattern id="minor" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#ffffff" stroke-opacity=".075" stroke-width="1"/></pattern><pattern id="major" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="url(#minor)"/><path d="M100 0H0V100" fill="none" stroke="#ffffff" stroke-opacity=".13" stroke-width="1"/></pattern></defs>
+<style>
+.border,.box,.wire,.symbol,.dim{fill:none;stroke:#f5fbff;stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}.border{stroke-width:3}.wire{stroke-width:3}.symbol{stroke-width:2.6}.thin{fill:none;stroke:#cfe6f6;stroke-width:1.2}.dash{fill:none;stroke:#f5fbff;stroke-width:2;stroke-dasharray:9 7}.junction{fill:#f5fbff}.label{font:20px Arial,sans-serif;fill:#f5fbff}.small{font:16px Arial,sans-serif;fill:#d5e7f8}.tiny{font:13px Arial,sans-serif;fill:#c4ddef}.title{font:bold 45px Arial,sans-serif;fill:white;letter-spacing:2px}.section{font:bold 23px Arial,sans-serif;fill:white;letter-spacing:1px}.ref{font:bold 22px Arial,sans-serif;fill:white}.net{font:bold 17px Arial,sans-serif;fill:#f5fbff}.netw{font:bold 15px Arial,sans-serif;fill:#ffe463}.pin{font:18px Consolas,monospace;fill:white}.pins{font:11px Consolas,monospace;fill:#c4ddef}.pinb{font:bold 12px Consolas,monospace;fill:#ffe463}.accent{fill:#ffe463;stroke:#ffe463}.pad{fill:none;stroke:#f5fbff;stroke-width:1.2}.hole{fill:none;stroke:#9fc6e2;stroke-width:1}.part{fill:#0b4a80;stroke:#f5fbff;stroke-width:2.2}.jumper{fill:none;stroke:#ffe463;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+</style>
+<rect width="1600" height="1131" fill="#07345e"/><rect width="1600" height="1131" fill="url(#major)"/>
+<rect class="border" x="28" y="28" width="1544" height="1075"/><path class="border" d="M28 131H1572M28 889H1572"/>
+<text class="title" x="65" y="89">TILTALERT / SCHÉMA ÉLECTRIQUE</text><text class="section" x="1535" y="84" text-anchor="end">UNO · REV A</text><text class="small" x="1535" y="111" text-anchor="end">Prototype 5 V USB  •  contact + alarme</text>
+<rect class="box" x="65" y="165" width="1455" height="690"/>
+<text class="section" x="95" y="206">01  ENTRÉE INCLINAISON</text>
+<text class="section" x="95" y="543">02  ACQUITTEMENT</text>
+<text class="section" x="1065" y="206">03  SORTIES D&#x27;ALARME</text>
+<rect class="box" x="615" y="276" width="365" height="440"/>
+<text class="ref" x="797" y="319" text-anchor="middle">U1</text>
+<text class="label" x="797" y="350" text-anchor="middle">Arduino Uno R3</text>
+<path class="dash" d="M615 384 L980 384"/>
+<circle class="symbol" cx="615" cy="415" r="6"/>
+<text class="pin" x="638" y="422" text-anchor="start">5V</text>
+<circle class="symbol" cx="615" cy="477" r="6"/>
+<text class="pin" x="638" y="484" text-anchor="start">D2</text>
+<circle class="symbol" cx="615" cy="625" r="6"/>
+<text class="pin" x="638" y="632" text-anchor="start">D12</text>
+<circle class="symbol" cx="980" cy="445" r="6"/>
+<text class="pin" x="957" y="452" text-anchor="end">D13</text>
+<circle class="symbol" cx="980" cy="540" r="6"/>
+<text class="pin" x="957" y="547" text-anchor="end">D3</text>
+<circle class="symbol" cx="980" cy="685" r="6"/>
+<text class="pin" x="957" y="692" text-anchor="end">GND</text>
+<path class="wire" d="M615 415 H500 V315 H230 V368"/>
+<circle class="junction" cx="230" cy="315" r="5"/><text class="net" x="241" y="306">+5V</text>
+<text class="ref" x="110" y="362">S1</text>
+<text class="small" x="110" y="390">KY-020 / contact NO</text>
+<path class="wire" d="M210 369 L255 369"/>
+<circle class="junction" cx="230" cy="369" r="5"/>
+<path class="symbol" d="M255 369 L300 400"/>
+<path class="wire" d="M310 425 L360 425"/>
+<circle class="junction" cx="310" cy="425" r="5"/>
+<path class="wire" d="M360 425 H475 V477 H615"/>
+<text class="net" x="372" y="414">TILT_D2</text>
+<path class="wire" d="M475 477 V498"/>
+<path class="symbol" d="M475 498 l-15 10 30 14 -30 14 30 14 -30 14 15 10"/>
+<path class="symbol" d="M475 574 V585 M456 585 H494 M463 594 H487 M469 603 H481"/>
+<text class="ref" x="500" y="535">R1</text>
+<text class="small" x="500" y="563">10 kΩ</text>
+<text class="tiny" x="504" y="596">GND</text>
+<text class="small" x="100" y="250">Fermé → D2 = HIGH</text>
+<text class="small" x="100" y="274">Ouvert → R1 tire D2 à LOW</text>
+<path class="wire" d="M615 625 H490 V638 H300"/>
+<path class="symbol" d="M300 613 L300 660"/>
+<path class="wire" d="M300 675 L300 794"/>
+<path class="symbol" d="M273 660 L327 660"/>
+<text class="ref" x="110" y="619">S2</text>
+<text class="small" x="110" y="647">Bouton NO</text>
+<text class="small" x="110" y="683">Appuyé → D12 = LOW</text>
+<text class="small" x="110" y="708">INPUT_PULLUP interne</text>
+<text class="net" x="322" y="630">RESET_D12</text>
+<path class="wire" d="M980 445 H1103"/>
+<path class="symbol" d="M1103 445 l14 -14 18 28 18 -28 18 28 18 -28 14 14"/>
+<path class="wire" d="M1203 445 L1252 445"/>
+<path class="symbol" d="M1252 417 V473 M1252 445 H1294 M1294 417 V473 M1294 445 H1375 V794"/>
+<path class="symbol" d="M1297 399 l24 -19 M1321 380 l-3 16 M1321 380 l-17 5 M1315 410 l24 -19 M1339 391 l-3 16 M1339 391 l-17 5"/>
+<text class="ref" x="1110" y="405">R2  220 Ω</text>
+<text class="ref" x="1232" y="360">D1  LED rouge</text>
+<text class="net" x="1000" y="468">ALARM_D13</text>
+<text class="pin" x="1218" y="490">A</text>
+<text class="pin" x="1294" y="490">K</text>
+<path class="wire" d="M980 540 H1050 V642 H1115"/>
+<rect class="box" x="1115" y="580" width="212" height="135"/>
+<text class="ref" x="1180" y="628">BZ1</text>
+<text class="small" x="1170" y="658">BUZZER ACTIF</text>
+<text class="tiny" x="1124" y="668">SIG</text>
+<text class="net" x="1000" y="528">BUZZ_D3</text>
+<path class="wire" d="M1205 580 V556"/>
+<path class="wire" d="M1265 715 V794"/>
+<text class="pin" x="1195" y="577">+</text>
+<text class="pin" x="1255" y="738">−</text>
+<text class="net" x="1217" y="558">+5V</text>
+<circle class="junction" cx="1205" cy="556" r="5"/>
+<text class="tiny" x="1124" y="690">Module actif, entrée SIG</text>
+<text class="tiny" x="1124" y="706">courant de commande faible</text>
+<path class="wire" d="M300 794 H1450"/>
+<circle class="junction" cx="1265" cy="794" r="5"/>
+<circle class="junction" cx="1375" cy="794" r="5"/>
+<path class="wire" d="M980 685 H1015 V794"/>
+<circle class="junction" cx="1015" cy="794" r="5"/>
+<path class="symbol" d="M1450 794 V811 M1428 811 H1472 M1437 820 H1463 M1444 829 H1456"/>
+<text class="net" x="1450" y="782" text-anchor="end">GND</text>
+<text class="small" x="60" y="928">NETLISTE VALIDÉE PAR SCRIPT · +5V ET GND SÉPARÉS · BROCHES D2 / D12 / D13 / D3 SELON LE SKETCH</text>
+<text class="small" x="60" y="956">S1 est un contact simulé, pas une mesure de choc; le buzzer doit être ACTIF. Alimenter l&#x27;Uno par USB 5 V.</text>
+<text class="section" x="60" y="1008">TILTALERT</text>
+<text class="small" x="60" y="1038">SCHÉMA ÉLECTRIQUE — PROTOTYPE ARDUINO UNO</text>
+<text class="tiny" x="60" y="1070">Échelle : schématique (NTS)  •  A3 paysage  •  Unités : V / Ω</text>
+<rect class="box" x="1030" y="982" width="500" height="97"/>
+<path class="wire" d="M1220 982 L1220 1079"/>
+<path class="wire" d="M1370 982 L1370 1079"/>
+<text class="tiny" x="1050" y="1010">DOCUMENT</text>
+<text class="ref" x="1050" y="1047">TA-EL-001</text>
+<text class="tiny" x="1240" y="1010">RÉVISION</text>
+<text class="ref" x="1240" y="1047">A</text>
+<text class="tiny" x="1390" y="1010">FORMAT</text>
+<text class="ref" x="1390" y="1047">A3 / NTS</text>
+</svg>

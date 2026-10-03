@@ -1,0 +1,23 @@
+{
+  "project": "TiltAlert Uno — circuit de démonstration corrigé",
+  "revision": "A",
+  "voltage": "5 V USB via Arduino Uno",
+  "components": [
+    {"ref": "U1", "type": "Arduino Uno R3", "value": "1", "note": "Sorties D3 et D13; entrées D2 et D12"},
+    {"ref": "S1", "type": "Contact d'inclinaison NO", "value": "1", "note": "KY-020 ou contact équivalent; fermé = HIGH sur D2"},
+    {"ref": "R1", "type": "Résistance", "value": "10 kΩ", "note": "Pull-down externe de D2; 0,25 W"},
+    {"ref": "S2", "type": "Bouton poussoir NO", "value": "1", "note": "Acquittement; D12 utilise INPUT_PULLUP"},
+    {"ref": "R2", "type": "Résistance", "value": "220 Ω", "note": "Limitation du courant de la LED externe; 0,25 W"},
+    {"ref": "D1", "type": "LED rouge externe", "value": "1", "note": "Anode vers R2; cathode vers GND"},
+    {"ref": "BZ1", "type": "Buzzer actif 5 V", "value": "1", "note": "Entrée signal compatible 5 V, faible courant; vérifier la fiche du module choisi"}
+  ],
+  "nets": [
+    {"name": "+5V", "terminals": ["U1.5V", "S1.1", "BZ1.VCC"]},
+    {"name": "GND", "terminals": ["U1.GND", "R1.2", "S2.2", "D1.K", "BZ1.GND"]},
+    {"name": "TILT_D2", "terminals": ["U1.D2", "S1.2", "R1.1"]},
+    {"name": "RESET_D12", "terminals": ["U1.D12", "S2.1"]},
+    {"name": "ALARM_D13", "terminals": ["U1.D13", "R2.1"]},
+    {"name": "LED_A", "terminals": ["R2.2", "D1.A"]},
+    {"name": "BUZZ_D3", "terminals": ["U1.D3", "BZ1.SIG"]}
+  ]
+}
