@@ -1,66 +1,52 @@
-// TiltAlert - Dispositif de Détection de Chocs et d'Inclinaisons
+#include "TiltAlertCore.h"
 
-// Définition des broches
-const int tiltPin = 2;         // Pin de signal du capteur de basculement KY-020
-const int buzzerPin = 3;       // Pin pour le buzzer KY-012
-const int ledPin = 13;         // Pin pour la LED rouge
-const int buttonPin = 12;      // Pin pour le bouton poussoir KY-004
+// Validated Uno wiring: KY-020 OUT -> D2, KY-012 -> D3,
+// red LED -> D13, KY-004 button -> D12 (active LOW).
+const uint8_t tiltPin = 2;
+const uint8_t buzzerPin = 3;
+const uint8_t ledPin = 13;
+const uint8_t buttonPin = 12;
 
-// Variables globales
-int tiltCounter = 0;           // Compteur d'inclinaisons détectées
-int tiltThreshold = 5;         // Seuil d'inclinaisons pour déclencher l'alarme
-bool isTilted = false;         // Indicateur si le capteur est incliné
-bool alarmActive = false;      // Indicateur si l'alarme est activée
+tiltalert::Controller controller;
+
+void printEvent(const char* event, uint32_t now) {
+  // JSON Lines over USB serial. uptime_ms is time since boot, not a UTC date.
+  Serial.print(F("{\"event\":\""));
+  Serial.print(event);
+  Serial.print(F("\",\"uptime_ms\":"));
+  Serial.print(now);
+  Serial.print(F(",\"count\":"));
+  Serial.print(controller.count());
+  Serial.print(F(",\"threshold\":"));
+  Serial.print(tiltalert::kThreshold);
+  Serial.println(F("}"));
+}
 
 void setup() {
-  // Configuration des broches
-  pinMode(tiltPin, INPUT);           // Capteur KY-020 en entrée
-  pinMode(buzzerPin, OUTPUT);        // Buzzer KY-012 en sortie
-  pinMode(ledPin, OUTPUT);           // LED rouge en sortie
-  pinMode(buttonPin, INPUT_PULLUP);  // Bouton poussoir KY-004 en entrée avec pull-up
-  Serial.begin(9600);                // Initialisation du moniteur série
+  pinMode(tiltPin, INPUT);  // Existing circuit uses an external pull-down.
+  pinMode(buttonPin, INPUT_PULLUP);
+  pinMode(buzzerPin, OUTPUT);
+  pinMode(ledPin, OUTPUT);
+  digitalWrite(buzzerPin, LOW);
+  digitalWrite(ledPin, LOW);
 
-  // Message de bienvenue
-  Serial.println("TiltAlert - Surveillance d'inclinaisons activée.");
+  Serial.begin(9600);
+  const uint32_t now = millis();
+  controller.begin(now, digitalRead(tiltPin) == HIGH,
+                   digitalRead(buttonPin) == LOW);
+  printEvent("ready", now);
 }
 
 void loop() {
-  // Lecture de l'état du bouton poussoir
-  int buttonState = digitalRead(buttonPin);
+  const uint32_t now = millis();
+  const tiltalert::Events events = controller.update(
+      now, digitalRead(tiltPin) == HIGH, digitalRead(buttonPin) == LOW);
 
-  // Réinitialisation du système si le bouton est pressé
-  if (buttonState == LOW && alarmActive) {
-    Serial.println("Réinitialisation !");
-    digitalWrite(buzzerPin, LOW);    // Désactiver le buzzer
-    digitalWrite(ledPin, LOW);       // Éteindre la LED
-    tiltCounter = 0;                 // Réinitialiser le compteur
-    alarmActive = false;             // Désactiver l'alarme
-    delay(200);                      // Pause pour éviter un rebond du bouton
-  }
+  if (events.tiltRecorded) printEvent("tilt", now);
+  if (events.alarmStarted) printEvent("alarm", now);
+  if (events.reset) printEvent("reset", now);
 
-  // Lecture de l'état du capteur de basculement
-  int tiltState = digitalRead(tiltPin);
-
-  // Détection d'une nouvelle inclinaison
-  if (tiltState == HIGH && !isTilted && !alarmActive) {
-    tiltCounter++;                  // Incrémenter le compteur
-    isTilted = true;                // Marquer l'état incliné
-    Serial.print("Inclinaisons détectées : ");
-    Serial.println(tiltCounter);
-  }
-
-  // Réinitialisation de l'état incliné si le capteur revient à LOW
-  if (tiltState == LOW) {
-    isTilted = false;
-  }
-
-  // Activation de l'alarme si le seuil est atteint
-  if (tiltCounter >= tiltThreshold && !alarmActive) {
-    Serial.println("Seuil atteint, activation de l'alarme !");
-    digitalWrite(buzzerPin, HIGH);  // Activer le buzzer
-    digitalWrite(ledPin, HIGH);     // Allumer la LED
-    alarmActive = true;             // Marquer l'alarme active
-  }
-
-  delay(100);  // Petite pause avant la prochaine itération
+  const uint8_t output = controller.alarmActive() ? HIGH : LOW;
+  digitalWrite(buzzerPin, output);
+  digitalWrite(ledPin, output);
 }

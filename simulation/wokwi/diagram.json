@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "author": "TiltAlert",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 15, "left": 5, "attrs": {} },
+    { "type": "wokwi-slide-switch", "id": "tilt", "top": -80, "left": 355, "attrs": { "bounce": "0" } },
+    { "type": "wokwi-pushbutton", "id": "reset", "top": 175, "left": 365, "attrs": { "color": "yellow", "key": "R", "bounce": "0", "label": "RESET" } },
+    { "type": "wokwi-led", "id": "alarmLed", "top": 10, "left": 340, "attrs": { "color": "yellow", "label": "ALARM D13" } },
+    { "type": "wokwi-resistor", "id": "ledR", "top": 35, "left": 285, "attrs": { "value": "220" } },
+    { "type": "wokwi-buzzer", "id": "activeBuzzer", "top": 95, "left": 340, "attrs": { "mode": "accurate", "volume": "0.1" } },
+    { "type": "wokwi-led", "id": "buzzerSignal", "top": 92, "left": 460, "attrs": { "color": "orange", "label": "D3 SIGNAL" } },
+    { "type": "wokwi-resistor", "id": "signalR", "top": 118, "left": 420, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    ["uno:2", "tilt:2", "green", []],
+    ["uno:GND.1", "tilt:1", "black", []],
+    ["uno:5V", "tilt:3", "red", []],
+    ["uno:12", "reset:1.l", "blue", []],
+    ["uno:GND.2", "reset:2.l", "black", []],
+    ["uno:13", "ledR:1", "yellow", []],
+    ["ledR:2", "alarmLed:A", "yellow", []],
+    ["alarmLed:C", "uno:GND.1", "black", []],
+    ["uno:3", "activeBuzzer:2", "orange", []],
+    ["activeBuzzer:1", "uno:GND.2", "black", []],
+    ["uno:3", "signalR:1", "orange", []],
+    ["signalR:2", "buzzerSignal:A", "orange", []],
+    ["buzzerSignal:C", "uno:GND.2", "black", []]
+  ],
+  "dependencies": {}
+}

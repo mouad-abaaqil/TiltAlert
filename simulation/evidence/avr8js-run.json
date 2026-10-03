@@ -1,0 +1,185 @@
+{
+  "simulator": "avr8js",
+  "mcu": "ATmega328P / Arduino Uno / 16 MHz",
+  "firmware": "Arduino CLI compiled code/tiltalert.ino + code/TiltAlertCore.h",
+  "hex_sha256": "57c02d56bbe2ec8edaa31ed4ef5606951e521c882ca857156b0ad0a1b97290df",
+  "assertions": "PASS: chatter ignored; exactly five tilt events; D13 and D3 HIGH only at alarm; reset clears outputs",
+  "timeline": [
+    {
+      "label": "boot",
+      "simulated_ms": 100,
+      "tilt_D2": false,
+      "reset_D12": false,
+      "led_D13": false,
+      "buzzer_D3": false,
+      "latest_serial": {
+        "event": "ready",
+        "uptime_ms": 0,
+        "count": 0,
+        "threshold": 5
+      }
+    },
+    {
+      "label": "contact chatter ignored",
+      "simulated_ms": 170,
+      "tilt_D2": false,
+      "reset_D12": false,
+      "led_D13": false,
+      "buzzer_D3": false,
+      "latest_serial": {
+        "event": "ready",
+        "uptime_ms": 0,
+        "count": 0,
+        "threshold": 5
+      }
+    },
+    {
+      "label": "tilt 1",
+      "simulated_ms": 270,
+      "tilt_D2": true,
+      "reset_D12": false,
+      "led_D13": false,
+      "buzzer_D3": false,
+      "latest_serial": {
+        "event": "tilt",
+        "uptime_ms": 208,
+        "count": 1,
+        "threshold": 5
+      }
+    },
+    {
+      "label": "tilt 2",
+      "simulated_ms": 450,
+      "tilt_D2": true,
+      "reset_D12": false,
+      "led_D13": false,
+      "buzzer_D3": false,
+      "latest_serial": {
+        "event": "tilt",
+        "uptime_ms": 389,
+        "count": 2,
+        "threshold": 5
+      }
+    },
+    {
+      "label": "tilt 3",
+      "simulated_ms": 630,
+      "tilt_D2": true,
+      "reset_D12": false,
+      "led_D13": false,
+      "buzzer_D3": false,
+      "latest_serial": {
+        "event": "tilt",
+        "uptime_ms": 569,
+        "count": 3,
+        "threshold": 5
+      }
+    },
+    {
+      "label": "tilt 4",
+      "simulated_ms": 810,
+      "tilt_D2": true,
+      "reset_D12": false,
+      "led_D13": false,
+      "buzzer_D3": false,
+      "latest_serial": {
+        "event": "tilt",
+        "uptime_ms": 749,
+        "count": 4,
+        "threshold": 5
+      }
+    },
+    {
+      "label": "tilt 5",
+      "simulated_ms": 990,
+      "tilt_D2": true,
+      "reset_D12": false,
+      "led_D13": true,
+      "buzzer_D3": true,
+      "latest_serial": {
+        "event": "tilt",
+        "uptime_ms": 929,
+        "count": 5,
+        "threshold": 5
+      }
+    },
+    {
+      "label": "alarm latched",
+      "simulated_ms": 1070,
+      "tilt_D2": false,
+      "reset_D12": false,
+      "led_D13": true,
+      "buzzer_D3": true,
+      "latest_serial": {
+        "event": "alarm",
+        "uptime_ms": 929,
+        "count": 5,
+        "threshold": 5
+      }
+    },
+    {
+      "label": "button reset",
+      "simulated_ms": 1200,
+      "tilt_D2": false,
+      "reset_D12": true,
+      "led_D13": false,
+      "buzzer_D3": false,
+      "latest_serial": {
+        "event": "reset",
+        "uptime_ms": 1104,
+        "count": 0,
+        "threshold": 5
+      }
+    }
+  ],
+  "serial": [
+    {
+      "event": "ready",
+      "uptime_ms": 0,
+      "count": 0,
+      "threshold": 5
+    },
+    {
+      "event": "tilt",
+      "uptime_ms": 208,
+      "count": 1,
+      "threshold": 5
+    },
+    {
+      "event": "tilt",
+      "uptime_ms": 389,
+      "count": 2,
+      "threshold": 5
+    },
+    {
+      "event": "tilt",
+      "uptime_ms": 569,
+      "count": 3,
+      "threshold": 5
+    },
+    {
+      "event": "tilt",
+      "uptime_ms": 749,
+      "count": 4,
+      "threshold": 5
+    },
+    {
+      "event": "tilt",
+      "uptime_ms": 929,
+      "count": 5,
+      "threshold": 5
+    },
+    {
+      "event": "alarm",
+      "uptime_ms": 929,
+      "count": 5,
+      "threshold": 5
+    },
+    {
+      "event": "reset",
+      "uptime_ms": 1104,
+      "count": 0,
+      "threshold": 5
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "simulation",
+  "version": "1.0.0",
+  "description": "ATmega328P firmware simulation for TiltAlert",
+  "private": true,
+  "scripts": {
+    "build": "sh build.sh",
+    "test": "npm run build && node run.mjs",
+    "wokwi:generate": "node generate-wokwi.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "avr8js": "^0.21.1"
+  }
+}

@@ -1,0 +1,8 @@
+.DS_Store
+.venv/
+web/node_modules/
+web/dist/
+simulation/node_modules/
+simulation/.build/
+__pycache__/
+ref/
