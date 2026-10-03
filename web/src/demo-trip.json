@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "trip": {
+    "id": "TA-2048",
+    "name": "Transport optique de précision",
+    "cargo": "Module de mesure · caisse 04",
+    "deviceId": "TILT-001",
+    "origin": "Paris, FR",
+    "destination": "Lyon, FR",
+    "startedAt": "2026-09-18T06:30:00Z",
+    "endedAt": "2026-09-18T15:42:00Z",
+    "batteryPercent": 82,
+    "lastPosition": { "lat": 45.764, "lon": 4.8357, "capturedAt": "2026-09-18T15:39:00Z", "accuracyM": 16 },
+    "route": [
+      [48.8566, 2.3522],
+      [48.4047, 2.7016],
+      [47.7982, 3.5738],
+      [47.022, 4.838],
+      [46.7811, 4.8537],
+      [45.764, 4.8357]
+    ]
+  },
+  "events": [
+    {
+      "id": "EV-001",
+      "type": "tilt",
+      "severity": "low",
+      "occurredAt": "2026-09-18T07:18:00Z",
+      "title": "Inclinaison détectée",
+      "detail": "Angle maximal simulé : 21° pendant 4 s",
+      "value": 21,
+      "unit": "°",
+      "location": { "status": "measured", "lat": 48.4047, "lon": 2.7016, "capturedAt": "2026-09-18T07:18:00Z", "accuracyM": 18 }
+    },
+    {
+      "id": "EV-002",
+      "type": "impact",
+      "severity": "critical",
+      "occurredAt": "2026-09-18T09:42:00Z",
+      "title": "Choc important",
+      "detail": "Pic simulé : 38 g · contrôle du colis conseillé",
+      "value": 38,
+      "unit": "g",
+      "location": { "status": "measured", "lat": 47.7982, "lon": 3.5738, "capturedAt": "2026-09-18T09:42:00Z", "accuracyM": 24 }
+    },
+    {
+      "id": "EV-003",
+      "type": "tilt",
+      "severity": "medium",
+      "occurredAt": "2026-09-18T11:06:00Z",
+      "title": "Basculement prolongé",
+      "detail": "Angle maximal simulé : 47° pendant 12 s",
+      "value": 47,
+      "unit": "°",
+      "location": { "status": "last_known", "lat": 47.022, "lon": 4.838, "capturedAt": "2026-09-18T10:54:00Z", "accuracyM": 32 }
+    },
+    {
+      "id": "EV-004",
+      "type": "impact",
+      "severity": "medium",
+      "occurredAt": "2026-09-18T12:33:00Z",
+      "title": "Vibration intense",
+      "detail": "Pic simulé : 14 g · événement enregistré hors ligne",
+      "value": 14,
+      "unit": "g",
+      "location": { "status": "last_known", "lat": 46.7811, "lon": 4.8537, "capturedAt": "2026-09-18T12:08:00Z", "accuracyM": 41 }
+    },
+    {
+      "id": "EV-005",
+      "type": "tilt",
+      "severity": "low",
+      "occurredAt": "2026-09-18T15:39:00Z",
+      "title": "Inclinaison à la livraison",
+      "detail": "Angle maximal simulé : 17° pendant 3 s",
+      "value": 17,
+      "unit": "°",
+      "location": { "status": "measured", "lat": 45.764, "lon": 4.8357, "capturedAt": "2026-09-18T15:39:00Z", "accuracyM": 16 }
+    }
+  ]
+}
